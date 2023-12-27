@@ -1,8 +1,7 @@
-﻿namespace Doctors.Models
+﻿namespace MyAPI.Services.Patient_Request
 {
-    public class Patient
+    public class AddPatientRequest
     {
-        public Guid PatientId { get; set; }
         public string? Name { get; set; }
         public string? Mobile { get; set; }
         public string? Address { get; set; }
