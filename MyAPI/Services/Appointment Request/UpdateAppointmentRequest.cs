@@ -1,8 +1,7 @@
-﻿namespace Doctors.Models
+﻿namespace MyAPI.Services.Doctor_Request
 {
-    public class Appointment
+    public class UpdateAppointmentRequest
     {
-        public Guid AppointmentId { get; set; }
         public string? DoctorId { get; set; }
         public int Number { get; set; }
         public string? Type { get; set; }

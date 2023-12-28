@@ -1,6 +1,6 @@
 ﻿namespace MyAPI.Services.Doctor_Request
 {
-    public class UpdatDoctorRequest
+    public class UpdateDoctorRequest
     {
         public string? Name { get; set; }
         public string? Specialist { get; set; }

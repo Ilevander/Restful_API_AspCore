@@ -3,7 +3,6 @@ using Doctors.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyAPI.Models;
-using MyAPI.Services.Doctor_Request;
 using MyAPI.Services.Patient_Request;
 using System.Net;
 using System.Reflection;

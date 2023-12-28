@@ -63,7 +63,7 @@ namespace Doctors.Controllers
 
         [HttpPut]
         [Route("{id:guid}")]
-        public async Task<IActionResult> UpdateDoctor([FromRoute] Guid id, UpdatDoctorRequest updatDoctorRequest)
+        public async Task<IActionResult> UpdateDoctor([FromRoute] Guid id, UpdateDoctorRequest updatDoctorRequest)
         {
            var doctor =  _dbContext.Doctors.Find(id);
             if(doctor != null)
