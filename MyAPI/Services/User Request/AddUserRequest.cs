@@ -1,8 +1,9 @@
-﻿namespace Doctors.Models
+﻿using Doctors.Models;
+
+namespace MyAPI.Models
 {
-    public class User
+    public class AddUserRequest
     {
-        public Guid UserID { get; set; }
         public int RoleID { get; set; }
         public string? UserName { get; set; }
         public string? Password { get; set; }
@@ -13,5 +14,4 @@
         // Navigation property for the Role entity (Many-to-One)
         public Role? Role { get; set; }
     }
-
 }

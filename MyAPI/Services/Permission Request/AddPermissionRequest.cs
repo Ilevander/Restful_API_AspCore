@@ -1,8 +1,9 @@
-﻿namespace Doctors.Models
+﻿using Doctors.Models;
+
+namespace MyAPI.Models
 {
-    public class Permission
+    public class AddPermissionRequest
     {
-        public Guid PermissionID { get; set; }
         public int RoleID { get; set; }
         public string? Title { get; set; }
         public string? Module { get; set; }

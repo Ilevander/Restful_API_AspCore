@@ -1,8 +1,9 @@
-﻿namespace Doctors.Models
+﻿using Doctors.Models;
+
+namespace MyAPI.Services.Patient_Request
 {
-    public class Clinic
+    public class UpdateClinicRequest
     {
-        public Guid ClinicID { get; set; }
         public string? ClinicName { get; set; }
         public string? Location { get; set; }
 

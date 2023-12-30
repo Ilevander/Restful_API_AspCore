@@ -4,10 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyAPI.Models;
 using MyAPI.Services.Doctor_Request;
-using MyAPI.Services.Patient_Request;
-using System.Net;
-using System.Reflection;
-using System.Xml.Linq;
+
 
 namespace Doctors.Controllers
 {
@@ -47,12 +44,13 @@ namespace Doctors.Controllers
         {
             var appointment = new Appointment()
             {
-                AppointmentId = Guid.NewGuid(),
-                DoctorId = addAppointmentRequest.DoctorId,
-                Number = addAppointmentRequest.Number,
-                Type = addAppointmentRequest.Type,
-                Date = addAppointmentRequest.Date,
+                AppointmentID = Guid.NewGuid(),
                 Description = addAppointmentRequest.Description,
+                AppointmentDate = addAppointmentRequest.AppointmentDate,
+                DoctorID = addAppointmentRequest.DoctorID,
+                Doctor = addAppointmentRequest.Doctor,
+                PatientID = addAppointmentRequest.PatientID,
+                Patient = addAppointmentRequest.Patient,
             };
             await _dbContext.Appointments.AddAsync(appointment);
             await _dbContext.SaveChangesAsync();
@@ -67,11 +65,12 @@ namespace Doctors.Controllers
            var appointment =  _dbContext.Appointments.Find(id);
             if(appointment != null)
             {
-                appointment.DoctorId = updateAppointmentRequest.DoctorId;
-                appointment.Number = updateAppointmentRequest.Number;
-                appointment.Type = updateAppointmentRequest.Type;
-                appointment.Date = updateAppointmentRequest.Date;
+                appointment.AppointmentDate = updateAppointmentRequest.AppointmentDate;
                 appointment.Description = updateAppointmentRequest.Description;
+                appointment.DoctorID = updateAppointmentRequest.DoctorID;
+                appointment.Doctor = updateAppointmentRequest.Doctor;
+                appointment.PatientID = updateAppointmentRequest.PatientID;
+                appointment.Patient = updateAppointmentRequest.Patient;
                 
                 await _dbContext.SaveChangesAsync();
                 return Ok(appointment);

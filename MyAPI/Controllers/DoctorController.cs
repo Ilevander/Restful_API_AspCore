@@ -1,5 +1,6 @@
 ﻿using Doctors.Data;
 using Doctors.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyAPI.Models;
@@ -10,6 +11,7 @@ using System.Xml.Linq;
 
 namespace Doctors.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class DoctorController : Controller
@@ -46,14 +48,13 @@ namespace Doctors.Controllers
         {
             var doctor = new Doctor()
             {
-                DoctorId = Guid.NewGuid(),
-                Name = addDoctorRequest.Name,
-                Specialist = addDoctorRequest.Specialist,
-                Mobile = addDoctorRequest.Mobile,
-                Email = addDoctorRequest.Email,
-                Username = addDoctorRequest.Username,
-                Password = addDoctorRequest.Password,
-                Address = addDoctorRequest.Address
+                DoctorID = Guid.NewGuid(),
+                DoctorName = addDoctorRequest.DoctorName,
+                Specialization = addDoctorRequest.Specialization,
+                ClinicID = addDoctorRequest.ClinicID,
+                Clinic = addDoctorRequest.Clinic,
+                Fees = addDoctorRequest.Fees,
+                Schedules = addDoctorRequest.Schedules,
             };
             await _dbContext.Doctors.AddAsync(doctor);
             await _dbContext.SaveChangesAsync();
@@ -68,13 +69,12 @@ namespace Doctors.Controllers
            var doctor =  _dbContext.Doctors.Find(id);
             if(doctor != null)
             {
-                doctor.Name = updatDoctorRequest.Name;
-                doctor.Specialist = updatDoctorRequest.Specialist;
-                doctor.Mobile = updatDoctorRequest.Mobile;
-                doctor.Email = updatDoctorRequest.Email;
-                doctor.Username = updatDoctorRequest.Username;
-                doctor.Password = updatDoctorRequest.Password;
-                doctor.Address = updatDoctorRequest.Address;
+                doctor.DoctorName = updatDoctorRequest.DoctorName;
+                doctor.Specialization = updatDoctorRequest.Specialization;
+                doctor.ClinicID = updatDoctorRequest.ClinicID;
+                doctor.Clinic = updatDoctorRequest.Clinic;
+                doctor.Fees = updatDoctorRequest.Fees;
+                doctor.Schedules = updatDoctorRequest.Schedules;
 
                 await _dbContext.SaveChangesAsync();
                 return Ok(doctor);
@@ -97,6 +97,18 @@ namespace Doctors.Controllers
             }
             return NotFound();
         }
+        // action that requires authentication
+        [HttpGet]
+        [Route("authenticated-action")]
+        public IActionResult AuthenticatedAction()
+        {
+            // This action requires authentication due to the [Authorize] attribute
+            //  can access the authenticated user's information using User.Identity.Name, etc.
+            var authenticatedUserName = User.Identity.Name;
+            return Ok($"Authenticated user: {authenticatedUserName}");
+        }
+
+       
     }
 }
     

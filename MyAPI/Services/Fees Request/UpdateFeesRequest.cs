@@ -1,13 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Doctors.Models;
+using System.ComponentModel.DataAnnotations;
 
-namespace Doctors.Models
+namespace MyAPI.Services.Doctor_Request
 {
-    public class Fees
+    public class UpdateFeestRequest
     {
-        public Guid FeeID { get; set; }
         public decimal Amount { get; set; }
         public int DoctorID { get; set; }
-
         // Navigation property for the Doctor entity (Many-to-One)
         public Doctor? Doctor { get; set; }
     }

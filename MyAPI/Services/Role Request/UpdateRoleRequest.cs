@@ -1,8 +1,9 @@
-﻿namespace Doctors.Models
+﻿using Doctors.Models;
+
+namespace MyAPI.Services.Doctor_Request
 {
-    public class Role
+    public class UpdateRoleRequest
     {
-        public Guid RoleID { get; set; }
         public string? Title { get; set; }
         public string? Description { get; set; }
 

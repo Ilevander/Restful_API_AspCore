@@ -1,13 +1,24 @@
-﻿namespace MyAPI.Services.Doctor_Request
+﻿using Doctors.Models;
+
+namespace MyAPI.Services.Doctor_Request
 {
     public class UpdateDoctorRequest
     {
-        public string? Name { get; set; }
-        public string? Specialist { get; set; }
-        public string? Mobile { get; set; }
-        public string? Email { get; set; }
-        public string? Username { get; set; }
-        public string? Password { get; set; }
-        public string? Address { get; set; }
+        public string? DoctorName { get; set; }
+        public string? Specialization { get; set; }
+
+        // Foreign key for the Clinic entity (Many-to-One)
+        public int ClinicID { get; set; }
+
+        // Navigation property for the Clinic entity (Many-to-One)
+        public Clinic? Clinic { get; set; }
+
+        // Navigation property for the Fees entity (One-to-Many)
+        public ICollection<Fees>? Fees { get; set; }
+
+        // Navigation property for the Schedule entity (One-to-Many)
+        public ICollection<Schedule>? Schedules { get; set; }
     }
 }
+
+

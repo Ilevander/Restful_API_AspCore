@@ -1,10 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Doctors.Models;
+using System.ComponentModel.DataAnnotations;
 
-namespace Doctors.Models
+namespace MyAPI.Models
 {
-    public class Fees
+    public class AddFeesRequest
     {
-        public Guid FeeID { get; set; }
         public decimal Amount { get; set; }
         public int DoctorID { get; set; }
 

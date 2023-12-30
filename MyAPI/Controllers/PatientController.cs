@@ -46,13 +46,14 @@ namespace MyAPI.Controllers
         {
             var patient = new Patient()
             {
-                PatientId = Guid.NewGuid(),
+                PatientID = Guid.NewGuid(),
                 Name = addPatientRequest.Name,
                 Mobile = addPatientRequest.Mobile,
                 Address = addPatientRequest.Address,
                 Email = addPatientRequest.Email,
                 Username = addPatientRequest.Username,
                 Password = addPatientRequest.Password,
+                Bookings = addPatientRequest.Bookings,
             };
             await _dbContext.Patients.AddAsync(patient);
             await _dbContext.SaveChangesAsync();
@@ -73,6 +74,7 @@ namespace MyAPI.Controllers
                 patient.Email = updatePatientRequest.Email;
                 patient.Username = updatePatientRequest.Username;
                 patient.Password = updatePatientRequest.Password;
+                patient.Bookings = updatePatientRequest.Bookings;
 
                 await _dbContext.SaveChangesAsync();
                 return Ok(patient);
